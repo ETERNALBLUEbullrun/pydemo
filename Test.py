@@ -1,4 +1,5 @@
 #Test.py exercises various Python features
+import TestSet
 x = 1
 xRef = x
 x <<= 8
