@@ -10,6 +10,10 @@ c = 1
 d = """"double" and 'single' quotes"""
 e = "'single' quotes"
 f = '"double"'
+if True:
+    pass
+elif False:
+    print("E: 'pass' should allow empty statement after 'if...:'")
 if d != f + " and " + e:
 	print("E: string escaping fail")
 if x is not x or x is xRef or x is not xVal:
