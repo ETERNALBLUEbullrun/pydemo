@@ -1,6 +1,7 @@
 #Test.py exercises various Python features
 import sys
 import TestSet
+import TestIo
 x = 1
 xRef = x
 x <<= 8
