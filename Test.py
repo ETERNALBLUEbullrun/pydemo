@@ -14,15 +14,15 @@ f = '"double"'
 if True:
     pass
 elif False:
-    print("E: 'pass' should allow empty statement after 'if...:'", file=sys.stderr)
+    raise Exception("E: 'pass' should allow empty statement after 'if...:'")
 if d != f + " and " + e:
-	print("E: string escaping fail", file=sys.stderr)
+	raise Exception("E: string escaping fail")
 if x is not x or x is xRef or x is not xVal:
-	print("E: referencing fail", file=sys.stderr)
+	raise Exception("E: referencing fail")
 if x + int(b) != 258:
-	print("E: int/str conversion fail", file=sys.stderr)
+	raise Exception("E: int/str conversion fail")
 if y in ["256"]:
-    print("E: 'in' should compare address, not value", file=sys.stderr)
+    raise Exception("E: 'in' should compare address, not value")
 if 1 != xRef:
-    print("E: reference should be to original value only", file=sys.stderr)
+    raise Exception("E: reference should be to original value only")
 
