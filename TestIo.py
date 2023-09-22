@@ -4,10 +4,10 @@ import io
 import locale
 import os
 
-inmemoryFile = io.StringIO("default str")
+inmemoryFile = io.StringIO("default 1")
 fullStr = "This sentence should be on a single line.\n"
-if "default str" != inmemoryFile.getvalue():
-    raise Exception("E: inmemoryFile should = 'default', not '" + inmemoryFile.getvalue() + "'")
+if "default 1" != inmemoryFile.getvalue():
+    raise Exception("E: inmemoryFile should = 'default 1', not '" + inmemoryFile.getvalue() + "'")
 print("This sente", "nce should", sep = '', end = '', file = inmemoryFile)
 print(" be on a single line.", end='\n', file = inmemoryFile)
 if fullStr != inmemoryFile.getvalue():
@@ -19,18 +19,23 @@ try:
     raise Exception("E: file 'out.tmp' already exists")
 except IOError:
     pass
-fd = io.TextIOWrapper(open("out.tmp", mode = 'x', buffering = -1, errors = None, newline = None, encoding = locale.getpreferredencoding(False), closefd = True, opener = None))
-if "default str" != fd.getvalue():
-    raise Exception("E: fd should = 'default', not '" + fd.getvalue() + "'")
+#fd = io.TextIOWrapper(open("out.tmp", mode = 'x', buffering = -1, errors = None, newline = None, encoding = locale.getpreferredencoding(False), closefd = True, opener = None))
+fd = io.TextIOWrapper(open("out.tmp", mode = 'xb', buffering = -1, errors = None, newline = None, closefd = True, opener = None))
 print("This sente", "nce should", sep = '', end = '', file = fd)
-print(" be on a single li", end='\n', file = fd)
+print(" be on a single li", end='', file = fd)
 fd.close()
 if fd := open("out.tmp", mode = 'a', newline = None):
-    print("ne.", end='\n', file = fd)
+    print("ne.\n", end='', file = fd)
+    fd.close()
 else:
     raise Exception("E: failed to reopen in append mode'")
-if fullStr != fd.getvalue():
-    raise Exception("E: fd should = '" + fullStr + "', not '" + fd.getvalue() + "'")
+if fd := open("out.tmp", mode = 'r', newline = None):
+    foundStr = fd.read();
+    fd.close()
+    if fullStr != foundStr:
+        raise Exception("E: fd should = '" + fullStr + "', not '" + foundStr + "'")
+else:
+    raise Exception("E: failed to reopen in read mode'")
 if os.path.exists("out.tmp"):
     os.remove("out.tmp")
 else:
