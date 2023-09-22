@@ -1,7 +1,7 @@
-#Test.py exercises various Python features
+#Demo.py demos much of Python
 import sys
-import TestSet
-import TestIo
+import DemoCollections
+import DemoIo
 x = 1
 xRef = x
 x <<= 8

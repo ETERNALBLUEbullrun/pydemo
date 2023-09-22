@@ -1,4 +1,4 @@
-#TestIo.py exercises various Python input/output
+#DemoIo.py demos Python's input/output
 import sys
 import io
 import locale

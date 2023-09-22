@@ -1,4 +1,4 @@
-#TestSet.ph tests builtin containers
+#DemoSet.ph demos Python's collections
 import sys
 y = int("256")
 if y in [1, "256", int("3")]: #in list/array

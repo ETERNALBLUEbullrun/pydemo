@@ -1,2 +1,2 @@
-# pytest
-Exercise all features of Python with -Wall -Werror, succintly and readably.
+# pydemo
+Demo Python's various functions with -Wall -Werror

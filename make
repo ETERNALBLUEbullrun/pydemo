@@ -1,5 +1,6 @@
 #!/bin/sh
 ctags -R
-python Test.py
-#tested with python3.10
+python Demo.py
+#Last known pass on Python 3.11
+#Should pass Python 2
 
